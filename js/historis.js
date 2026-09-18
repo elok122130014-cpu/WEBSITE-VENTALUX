@@ -519,7 +519,7 @@ function tampilkanData(data) {
 <td>
     ${
         item.current_gen != null
-        ? Number(item.current_gen).toFixed(0)
+        ? Number(item.current_gen).toFixed(3)
         : "-"
     } mA
 </td>
@@ -527,7 +527,7 @@ function tampilkanData(data) {
 <td>
     ${
         item.power_gen != null
-        ? Number(item.power_gen).toFixed(0)
+        ? Number(item.power_gen).toFixed(3)
         : "-"
     } mW
 </td>
@@ -543,7 +543,7 @@ function tampilkanData(data) {
 <td>
     ${
         item.current_bat != null
-        ? Number(item.current_bat).toFixed(0)
+        ? Number(item.current_bat).toFixed(3)
         : "-"
     } mA
 </td>
@@ -551,7 +551,7 @@ function tampilkanData(data) {
 <td>
     ${
         item.power_bat != null
-        ? Number(item.power_bat).toFixed(0)
+        ? Number(item.power_bat).toFixed(3)
         : "-"
     } mW
 </td>

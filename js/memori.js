@@ -282,15 +282,57 @@ function tampilkanTabelMemori(data) {
     <td>${item.temperature ?? "-"}</td>
 
     <!-- GENERATOR -->
-    <td>${item.voltage_gen ?? "-"}</td>
-    <td>${item.current_gen ?? "-"}</td>
-    <td>${item.power_gen ?? "-"}</td>
+    <td>
+    ${
+        item.voltage_gen != null
+            ? Number(item.voltage_gen).toFixed(2)
+            : "-"
+    }
+</td>
 
-    <!-- BATERAI -->
-    <td>${item.voltage_bat ?? "-"}</td>
-    <td>${item.current_bat ?? "-"}</td>
-    <td>${item.power_bat ?? "-"}</td>
-    <td>${item.battery ?? "-"}</td>
+<td>
+    ${
+        item.current_gen != null
+            ? Number(item.current_gen).toFixed(3)
+            : "-"
+    }
+</td>
+
+<td>
+    ${
+        item.power_gen != null
+            ? Number(item.power_gen).toFixed(3)
+            : "-"
+    }
+</td>
+
+<td>
+    ${
+        item.voltage_bat != null
+            ? Number(item.voltage_bat).toFixed(2)
+            : "-"
+    }
+</td>
+
+<td>
+    ${
+        item.current_bat != null
+            ? Number(item.current_bat).toFixed(3)
+            : "-"
+    }
+</td>
+
+<td>
+    ${
+        item.power_bat != null
+            ? Number(item.power_bat).toFixed(3)
+            : "-"
+    }
+</td>
+
+<td>
+    ${item.battery ?? "-"}%
+</td>
 `;
 
         tbody.appendChild(row);
@@ -544,13 +586,13 @@ function tampilkanGrafikMemori(data) {
 
                     callbacks: {
 
-                        label: function(context) {
+                       label: function(context) {
 
-                            return (
-                                `${config.label}: ` +
-                                `${context.parsed.y} ` +
-                                `${config.unit}`
-                            );
+                         return (
+                        `${config.label}: ` +
+                        `${Number(context.parsed.y).toFixed(3)} ` +
+                        `${config.unit}`
+                         );
 
                         }
 
@@ -796,23 +838,33 @@ async function downloadMemori(namaMemori, memori) {
         item.voltage_gen ?? "-",
 
     current_gen:
-        item.current_gen ?? "-",
+    item.current_gen != null
+        ? Number(item.current_gen).toFixed(3)
+        : "-",
 
-    power_gen:
-        item.power_gen ?? "-",
+power_gen:
+    item.power_gen != null
+        ? Number(item.power_gen).toFixed(3)
+        : "-",
 
     // =========================
     // BATERAI
     // =========================
 
-    voltage_bat:
-        item.voltage_bat ?? "-",
+   voltage_bat:
+    item.voltage_bat != null
+        ? Number(item.voltage_bat).toFixed(2)
+        : "-",
 
-    current_bat:
-        item.current_bat ?? "-",
+current_bat:
+    item.current_bat != null
+        ? Number(item.current_bat).toFixed(3)
+        : "-",
 
-    power_bat:
-        item.power_bat ?? "-",
+power_bat:
+    item.power_bat != null
+        ? Number(item.power_bat).toFixed(3)
+        : "-",
 
     battery:
         item.battery ?? "-"
